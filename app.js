@@ -1,12 +1,8 @@
 import express from "express";
 import "dotenv/config.js";
 import Hello from "./hello.js";
-import Lab5 from "./lab5.js";
-import CourseRoutes from "./courses/routes.js";
-import ModuleRoutes from "./modules/routes.js";
 import cors from "cors";
 import mongoose from "mongoose";
-import UserRoutes from "./users/routes.js";
 import session from "express-session";
 import "dotenv/config";
 
