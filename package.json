@@ -1,0 +1,25 @@
+{
+  "name": "movie-network-node-server",
+  "version": "1.0.0",
+  "description": "Node server backend for cs5610 final project. Movie network project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylanmarin/movie-network-node-server.git"
+  },
+  "keywords": [
+    "Node",
+    "REST",
+    "Server",
+    "HTTP"
+  ],
+  "author": "Dylan Marin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dylanmarin/movie-network-node-server/issues"
+  },
+  "homepage": "https://github.com/dylanmarin/movie-network-node-server#readme"
+}
