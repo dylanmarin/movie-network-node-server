@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 
 const userSchema = new mongoose.Schema({
         username: {type: String, required: true, unique: true},
@@ -8,9 +8,9 @@ const userSchema = new mongoose.Schema({
         photoURL: {type: String, default: ""},
         bio: {type: String, default: ""},
         following: {
-            type: Map,
-            of: String,
-            default: {}
+            type: [Schema.Types.ObjectId],
+            default: []
+
         },
         role: {
             type: String,
@@ -19,4 +19,8 @@ const userSchema = new mongoose.Schema({
         },
     },
     {collection: "users"});
+
+
 export default userSchema;
+
+
