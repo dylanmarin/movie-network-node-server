@@ -1,10 +1,14 @@
+import * as dao from "./movies/details/dao.js";
+
 function HelloRoutes(app) {
     app.get("/", (req, res) => {
-        res.send("Welcome to Web Dev!");
+        res.send(`Welcome to Web Dev!`);
     });
-    app.get("/hello", (req, res) => {
-        res.send("Life is good!");
+    app.get("/test", async (req, res) => {
+        console.log(new Date().getTime())
+        res.send('done')
     });
 }
+
 
 export default HelloRoutes;
