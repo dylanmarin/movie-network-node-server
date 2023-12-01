@@ -27,7 +27,6 @@ function MovieRoutes(app) {
 
         // fetch it from tmdb and update the database
         const clientFetchedMovieDetails = await client.getMovieDetails(movieId);
-
         // if we got a response
         if (clientFetchedMovieDetails) {
             // update the database if it is already in there
@@ -211,8 +210,8 @@ function MovieRoutes(app) {
     app.get("/api/movies/:movieId/details", findMovieById);
     app.get("/api/movies/:movieId/credits", findMovieCredits);
     app.get("/api/movies/:movieId/recommendations", findMovieRecommendations);
-    app.get("/api/popular/movies/:timeRange", findPopularMovies);
-    app.get("/api/search/movies/:searchTerm", findMoviesSearchResults);
+    app.get("/api/movies/popular/:timeRange", findPopularMovies);
+    app.get("/api/movies/search/:searchTerm", findMoviesSearchResults);
 }
 
 

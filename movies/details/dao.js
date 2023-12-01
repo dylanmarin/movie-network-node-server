@@ -1,11 +1,11 @@
 import model from "./model.js";
 
-export const createMovieDetails = (movie) => {
+export const createMovieDetails = (movieId, details) => {
     return model.create(
         {
             lastUpdated: new Date().getTime(),
-            movieId: movie.id,
-            details: movie
+            movieId: movieId,
+            details: details
         }
     );
 }
@@ -19,6 +19,6 @@ export const updateMovieDetailsById = (movieId, movie) => {
 }
 
 export const deleteMovieDetailsById = (movieId) => {
-    return model.deleteOne({movieId:  parseInt(movieId)});
+    return model.deleteOne({movieId: parseInt(movieId)});
 }
 
