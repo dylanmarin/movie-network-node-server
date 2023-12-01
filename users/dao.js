@@ -5,10 +5,12 @@ export const createUser = (user) => model.create(user);
 
 export const findAllUsers = () => model.find();
 
-export const findUserById = (userId) => model.findById(userId);
+export const findUserById = (userId) => {
+    return model.findById(userId);
+}
 
-export const findUserByUsername = (username) =>
-    model.findOne({username: username});
+
+export const findUserByUsername = (username) => model.findOne({username: username});
 
 
 export const findUserByCredentials = (usr, pass) => model.findOne({username: usr, password: pass});

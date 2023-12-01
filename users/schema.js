@@ -7,11 +7,6 @@ const userSchema = new mongoose.Schema({
         email: String,
         photoURL: {type: String, default: ""},
         bio: {type: String, default: ""},
-        following: {
-            type: [Schema.Types.ObjectId],
-            default: []
-
-        },
         role: {
             type: String,
             enum: ["USER", "MODERATOR", "ADMIN"],

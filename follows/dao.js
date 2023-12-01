@@ -4,7 +4,7 @@ export const userFollowsUser = (follower, followed) =>
     model.create({follower, followed});
 
 export const userUnfollowsUser = (follower, followed) =>
-    model.deleteOne({follower, followed});
+    model.deleteMany({follower, followed});
 
 export const findFollowersOfUser = (followed) =>
     model.find({followed}).populate("follower");
