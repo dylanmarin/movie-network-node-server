@@ -6,8 +6,10 @@ import cors from "cors";
 import mongoose from "mongoose";
 import session from "express-session";
 import "dotenv/config";
+import UserRoutes from "./users/routes.js";
+import ReviewsRoutes from "./reviews/routes.js";
 
-const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas";
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || "mongodb://127.0.0.1:27017/project";
 mongoose.connect(CONNECTION_STRING);
 
 const app = express();
@@ -37,5 +39,7 @@ app.use(express.json());
 
 Hello(app);
 MovieRoutes(app);
+UserRoutes(app);
+ReviewsRoutes(app);
 
 app.listen(process.env.PORT || 4000);
