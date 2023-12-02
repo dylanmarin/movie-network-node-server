@@ -18,7 +18,7 @@ function ReviewsRoutes(app) {
 
     const updateReview = async (req, res) => {
         const {reviewId} = req.params;
-        const review = await dao.updateReview(reviewId);
+        const review = await dao.updateReview(reviewId, req.body);
         res.send(review);
     }
 
