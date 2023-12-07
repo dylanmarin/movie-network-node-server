@@ -65,3 +65,25 @@ export const updatePopularListResponse = (timeRange, popularListResponse) => {
 export const findPopularListResponse = (timeRange) => {
     return model.findOne({timeRange: timeRange});
 }
+
+export const findCompanyListResponse = (companyId) => {
+    return model.findOne({companyId: parseInt(companyId)});
+}
+
+export const createCompanyListResponse = (companyId, companyListResponse) => {
+    return model.create({
+        lastUpdated: new Date().getTime(),
+        searchType: "COMPANY",
+        companyId: parseInt(companyId),
+        response: companyListResponse
+    })
+}
+
+export const updateCompanyListResponse = (companyId, companyListResponse) => {
+    return model.updateOne({companyId: parseInt(companyId)}, {
+        $set: {
+            response: companyListResponse,
+            lastUpdated: new Date().getTime()
+        }
+    });
+}

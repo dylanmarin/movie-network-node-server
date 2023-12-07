@@ -203,8 +203,6 @@ function MovieRoutes(app) {
 
             res.send(clientFetchedSearchResults);
         }
-
-
     }
 
     app.get("/api/movies/:movieId/details", findMovieById);

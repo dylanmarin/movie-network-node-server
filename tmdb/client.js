@@ -38,3 +38,18 @@ export const getMoviesSearchResults = async (searchString) => {
     );
     return response.data.results;
 }
+
+
+export const getProductionCompanyDetails = async(companyId) => {
+    const response = await axios.get(
+        `${TMDB_API}/company/${companyId}?${TMBD_API_AUTH_SUFFIX}`
+    );
+    return response.data;
+}
+
+export const getMoviesByProductionCompany = async(companyId) => {
+    const response = await axios.get(
+        `${TMDB_API}/discover/movie?include_adult=false&sort_by=popularity.desc&with_companies=${companyId}&${TMBD_API_AUTH_SUFFIX}`
+    );
+    return response.data.results;
+}

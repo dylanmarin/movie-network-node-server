@@ -9,6 +9,7 @@ import "dotenv/config";
 import UserRoutes from "./users/routes.js";
 import ReviewsRoutes from "./reviews/routes.js";
 import FollowsRoutes from "./follows/routes.js";
+import CompanyRoutes from "./companies/routes.js";
 
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || "mongodb://127.0.0.1:27017/project";
 mongoose.connect(CONNECTION_STRING);
@@ -44,5 +45,6 @@ MovieRoutes(app);
 UserRoutes(app);
 ReviewsRoutes(app);
 FollowsRoutes(app);
+CompanyRoutes(app);
 
 app.listen(process.env.PORT || 4000);
