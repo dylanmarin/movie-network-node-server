@@ -53,3 +53,10 @@ export const getMoviesByProductionCompany = async(companyId) => {
     );
     return response.data.results;
 }
+
+export const getWatchProviders = async(movieId) => {
+    const response = await axios.get(
+        `${TMDB_API}/movie/${movieId}/watch/providers?${TMBD_API_AUTH_SUFFIX}`
+    );
+    return response.data.results;
+}

@@ -5,6 +5,6 @@ const companySchema = new mongoose.Schema({
         companyId: {type: Number, required: true},
         details: Object
     },
-    {collection: "movieDetails"});
+    {collection: "companies"});
 
 export default companySchema;

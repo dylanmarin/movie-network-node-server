@@ -61,6 +61,15 @@ function UserRoutes(app) {
         res.json(req.session['currentUser']);
     };
 
+    const search = async (req, res) => {
+        const {searchText} = req.params;
+        const users = await dao.findAllUsers(searchText);
+
+        const response = users.filter(user => user.username.toLowerCase().includes(searchText.toLowerCase()));
+
+        res.json(response);
+    }
+
     app.post("/api/users", createUser);
     app.get("/api/users", findAllUsers);
     app.get("/api/users/:userId", findUserById);
@@ -70,6 +79,7 @@ function UserRoutes(app) {
     app.post("/api/users/signin", signin);
     app.post("/api/users/signout", signout);
     app.post("/api/users/account", account);
+    app.get("/api/users/search/:searchText", search);
 }
 
 export default UserRoutes;
