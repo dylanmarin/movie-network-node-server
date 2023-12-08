@@ -24,8 +24,15 @@ function CompanyRoutes(app) {
             }
         }
 
+        let clientFetchedCompanyDetails;
+
         // fetch it from tmdb and update the database
-        const clientFetchedCompanyDetails = await client.getProductionCompanyDetails(companyId);
+        try {
+            clientFetchedCompanyDetails = await client.getProductionCompanyDetails(companyId);
+        } catch (e) {
+            clientFetchedCompanyDetails = null;
+        }
+
         // if we got a response
         if (clientFetchedCompanyDetails) {
             // update the database if it is already in there
@@ -38,8 +45,8 @@ function CompanyRoutes(app) {
                 await companiesDao.createCompanyDetails(companyId, clientFetchedCompanyDetails);
             }
 
-            res.send(clientFetchedCompanyDetails);
         }
+        res.send(clientFetchedCompanyDetails);
     }
 
 
@@ -63,8 +70,16 @@ function CompanyRoutes(app) {
             }
         }
 
+
+        let clientFetchedMovies;
+
         // fetch it from tmdb and update the database
-        const clientFetchedMovies = await client.getMoviesByProductionCompany(companyId);
+        try {
+            clientFetchedMovies = await client.getMoviesByProductionCompany(companyId);
+        } catch (e) {
+            clientFetchedMovies = null;
+        }
+
         // if we got a response
         if (clientFetchedMovies) {
             // update the database if it is already in there
@@ -77,8 +92,8 @@ function CompanyRoutes(app) {
                 await listResponsesDao.createCompanyListResponse(companyId, clientFetchedMovies);
             }
 
-            res.send(clientFetchedMovies);
         }
+        res.send(clientFetchedMovies);
     }
 
 

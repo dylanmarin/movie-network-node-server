@@ -24,9 +24,14 @@ function MovieRoutes(app) {
                 return;
             }
         }
+        let clientFetchedMovieDetails;
+        try {
+            // fetch it from tmdb and update the database
+            clientFetchedMovieDetails = await client.getMovieDetails(movieId);
+        } catch (e) {
+            clientFetchedMovieDetails = null;
+        }
 
-        // fetch it from tmdb and update the database
-        const clientFetchedMovieDetails = await client.getMovieDetails(movieId);
         // if we got a response
         if (clientFetchedMovieDetails) {
             // update the database if it is already in there
@@ -39,8 +44,8 @@ function MovieRoutes(app) {
                 await detailsDao.createMovieDetails(movieId, clientFetchedMovieDetails);
             }
 
-            res.send(clientFetchedMovieDetails);
         }
+        res.send(clientFetchedMovieDetails);
 
 
     }
@@ -66,7 +71,12 @@ function MovieRoutes(app) {
         }
 
         // fetch it from tmdb and update the database
-        const clientFetchedMovieCredits = await client.getMovieCredits(movieId);
+        let clientFetchedMovieCredits
+        try {
+            clientFetchedMovieCredits = await client.getMovieCredits(movieId);
+        } catch (e) {
+            clientFetchedMovieCredits = null;
+        }
 
         // if we got a response
         if (clientFetchedMovieCredits) {
@@ -80,8 +90,8 @@ function MovieRoutes(app) {
                 await creditsDao.createMovieCredits(clientFetchedMovieCredits);
             }
 
-            res.send(clientFetchedMovieCredits);
         }
+        res.send(clientFetchedMovieCredits);
 
 
     }
@@ -106,8 +116,14 @@ function MovieRoutes(app) {
             }
         }
 
+
+        let clientFetchedMovieRecommendations = null;
         // fetch it from tmdb and update the database
-        const clientFetchedMovieRecommendations = await client.getMovieRecommendations(movieId);
+        try {
+            clientFetchedMovieRecommendations = await client.getMovieRecommendations(movieId);
+        } catch (e) {
+            clientFetchedMovieRecommendations = null;
+        }
 
         // if we got a response
         if (clientFetchedMovieRecommendations) {
@@ -121,8 +137,8 @@ function MovieRoutes(app) {
                 await listResponsesDao.createRecommendationsListResponse(movieId, clientFetchedMovieRecommendations);
             }
 
-            res.send(clientFetchedMovieRecommendations);
         }
+        res.send(clientFetchedMovieRecommendations);
     }
 
     const findPopularMovies = async (req, res) => {
@@ -160,8 +176,8 @@ function MovieRoutes(app) {
                 await listResponsesDao.createPopularListResponse(timeRange, clientFetchedPopularMovies);
             }
 
-            res.send(clientFetchedPopularMovies);
         }
+        res.send(clientFetchedPopularMovies);
 
 
     }
@@ -201,8 +217,8 @@ function MovieRoutes(app) {
                 await listResponsesDao.createSearchListResponse(searchTerm, clientFetchedSearchResults);
             }
 
-            res.send(clientFetchedSearchResults);
         }
+        res.send(clientFetchedSearchResults);
     }
 
     app.get("/api/movies/:movieId/details", findMovieById);
