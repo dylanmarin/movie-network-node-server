@@ -1,10 +1,12 @@
 import express from "express";
+// import session from "express-session";
+import session from "cookie-session";
+
 import "dotenv/config.js";
 import Hello from "./hello.js";
 import MovieRoutes from "./movies/routes.js";
 import cors from "cors";
 import mongoose from "mongoose";
-import session from "express-session";
 import "dotenv/config";
 import UserRoutes from "./users/routes.js";
 import ReviewsRoutes from "./reviews/routes.js";
